@@ -1,2 +1,6 @@
 # Reverse an array
-## Challenge: reverse an array without using any of the built in methods
+## Challenge
+Reverse an array without using any built in methods. There was some dispute when this was written about whether or not that included the length property (it did not) so this was written without the length property.
+
+## whiteboard image
+![whiteboard-reverse-array](whiteboard.jpg)
