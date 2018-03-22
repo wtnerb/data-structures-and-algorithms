@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reverse-array", "reverse-array\reverse-array.csproj", "{8376E717-BCE5-4A15-A8D9-C5431278E27B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "reverse-array", "reverse-array\reverse-array.csproj", "{8376E717-BCE5-4A15-A8D9-C5431278E27B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

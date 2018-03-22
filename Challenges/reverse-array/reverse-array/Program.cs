@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace reversearray
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -26,13 +26,13 @@ namespace reversearray
         {
             ShowArr(example);
             Console.WriteLine("simple reverse:");
-            ShowArr(SimpleReverse(example));
+            ShowArr(ReverseArray(example));
             Console.WriteLine("in place reverse:");
             InPlaceReverse(example);
             ShowArr(example);
         }
 
-        static void InPlaceReverse(int[] nums)
+        public static void InPlaceReverse(int[] nums)
         {
             for (int i = 0; i < nums.Length / 2; i++)
             {
@@ -42,7 +42,7 @@ namespace reversearray
             }
         }
 
-        static int[] SimpleReverse(int[] nums)
+        public static int[] ReverseArray(int[] nums)
         {
             int[] output = new int[nums.Length];
             for (
