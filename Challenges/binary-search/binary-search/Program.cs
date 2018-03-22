@@ -7,6 +7,8 @@ namespace binary_search
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            int[] testArr = { 1, 3, 4, 5, 6, 7, 9 };
+            int val = BinarySearch(testArr, 9);
         }
 
         public static int BinarySearch (int[] array, int target)
@@ -21,7 +23,7 @@ namespace binary_search
                     min++;
                     pivot++;
                 }
-                if (max == pivot)
+                else if (max == pivot)
                 {
                     max--;
                     pivot--;

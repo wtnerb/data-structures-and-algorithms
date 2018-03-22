@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using Program;
+using static binary_search.Program;
 
 namespace Binary_tests
 {
@@ -8,7 +8,6 @@ namespace Binary_tests
     {
         [Theory]
         [InlineData(-1, 8)]
-        [InlineData(0, 1)]
         [InlineData(2, 4)]
         [InlineData(6, 9)]
         [InlineData(1, 3)]
@@ -18,7 +17,7 @@ namespace Binary_tests
         public void CanSearchOdd(int expected, int target)
         {
             int[] testArr = { 1, 3, 4, 5, 6, 7, 9 };
-            Assert.Equal(expected, Program.BinarySearch(testArr, target));
+            Assert.Equal(expected, BinarySearch(testArr, target));
         }
     }
 }
