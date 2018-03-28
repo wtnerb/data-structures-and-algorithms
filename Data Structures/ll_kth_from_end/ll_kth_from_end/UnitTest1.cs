@@ -19,7 +19,7 @@ namespace ll_kth_from_end
         public void CanFindThirdFromEnd()
         {
             LinkedList l = new LinkedList(new int[] { 1, 5, 3, 6, 2, 9, 11 });
-            LinkedList ex = new LinkedList(new int[] { 3, 5, 1 });
+            LinkedList ex = new LinkedList(new int[] { 1, 5, 3 });
             Node expect = ex.Head;
             Assert.Equal(expect, l.KthFromEnd(2));
         }
