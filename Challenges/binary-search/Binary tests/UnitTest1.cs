@@ -7,6 +7,7 @@ namespace Binary_tests
     public class UnitTest1
     {
         [Theory]
+        [InlineData(0, 1)]
         [InlineData(-1, 8)]
         [InlineData(2, 4)]
         [InlineData(6, 9)]

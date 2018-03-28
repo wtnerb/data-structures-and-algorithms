@@ -18,29 +18,29 @@ namespace binary_search
             do
             {
                 int pivot = min + (max - min) / 2;
-                if (min == pivot)
-                {
-                    min++;
-                    pivot++;
-                }
-                else if (max == pivot)
-                {
-                    max--;
-                    pivot--;
-                }
+                //if (min == pivot)
+                //{
+                //    min++;
+                //    pivot++;
+                //}
+                //else if (max == pivot)
+                //{
+                //    max--;
+                //    pivot--;
+                //}
                 if (array[pivot] == target)
                 {
                     return pivot;
                 }
                 else if (array[pivot] > target)
                 {
-                    max = pivot;
+                    max = pivot -1;
                 }
                 else
                 {
-                    min = pivot;
+                    min = pivot + 1;
                 }
-            } while (min != max);
+            } while (min < max);
             return -1;
         }
     }
