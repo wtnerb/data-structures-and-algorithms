@@ -12,14 +12,14 @@ namespace kth_from_end
         {
             Head = new Node(value);
         }
+
         public LinkedList(int[] values)
         {
-            LinkedList l = new LinkedList(values[0]);
-            for (int i = 1; i < values.Length; i++)
+            Head = null;
+            foreach( int val in values)
             {
-                l.Add(values[i]);
+                Add(val);
             }
-            Head = l.Head;
         }
 
         public void Add(int value)
@@ -58,7 +58,7 @@ namespace kth_from_end
             return count;
         }
 
-        public Node KthFromEnd (int k)
+        public Node KthFromEnd(int k)
         {
             int len = Length() - 1;
             Node current = Head;
