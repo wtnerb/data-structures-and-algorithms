@@ -19,26 +19,31 @@ namespace SinglyLinkedList
             {
                 l.Add(values[i]);
             }
+            Head = l.Head;
         }
 
         public void Add (int value)
         {
-            Node addition = new Node(value, Head);
+            Node addition = new Node(value);
+            Node oldHead = Head;
+            addition.Next = oldHead;
             Head = addition;
         }
 
-        public Node Find (int value)
+        public int Find (int value)
         {
+            int index = 0;
             Node current = Head;
             do
             {
                 if (current.Value == value)
                 {
-                    return current;
+                    return index;
                 }
+                index++;
                 current = current.Next;
             } while (current.Next != null);
-            return null;
+            return -1;
         }
     }
 }

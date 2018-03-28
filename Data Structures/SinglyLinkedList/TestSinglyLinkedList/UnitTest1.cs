@@ -30,21 +30,13 @@ namespace TestSinglyLinkedList
         }
 
         [Theory]
-        [InlineData(new int[] { 1, 5, 3, 6, 7 }, 5, 1)]
-        [InlineData(new int[] { 1, 5, 3, 6, 2, 9, 11 }, 7, null)]
-        [InlineData(new int[] { 1, 5, 3, 6, 2, 9, 11 }, 9, 5)]
-
+        [InlineData(new int[] { 1, 5, 3, 6, 7 }, 5, 3)]
+        [InlineData(new int[] { 1, 5, 3, 6, 2, 9, 11 }, 7, -1)]
+        [InlineData(new int[] { 1, 5, 3, 6, 2, 9, 11 }, 9, 1)]
         public void CanFindInList(int[] arr, int target, int result)
         {
             LinkedList l = new LinkedList(arr);
-            int linkedListlLength = 1;
-            Node current = l.Head;
-            while (current.Next != null)
-            {
-                linkedListlLength++;
-                current = current.Next;
-            }
-            Assert.Equal(len, linkedListlLength);
+            Assert.Equal(result, l.Find(target));
         }
 
 
