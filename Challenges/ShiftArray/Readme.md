@@ -7,4 +7,4 @@ The challenge is it insert and shift a value into the center of an array. Exampl
 ```
 
 ## Solution
-![whiteboard image](../../../assets/shift-array)
+![whiteboard image](../../assets/shift-array.jpg)
