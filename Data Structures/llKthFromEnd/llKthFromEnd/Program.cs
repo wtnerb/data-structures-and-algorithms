@@ -7,9 +7,13 @@ namespace kth_from_end
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.ReadKey();
             LinkedList l = new LinkedList(new int[] { 1, 5, 3, 6, 7 });
-            l.KthFromEnd(1);
+            Node result0 = l.KthFromEnd(0);
+            Node expect0 = new Node(1);
+            Node result1 = l.KthFromEnd(1);
+            Node expect1 = new Node(5);
+            expect1.Next = new Node(1);
+            Console.WriteLine(expect0 == result0); 
             Console.ReadKey();
         }
     }
