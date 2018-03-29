@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShiftArray", "ShiftArray\ShiftArray.csproj", "{279B345A-CC54-4259-BC67-83F0E0373264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{7542D4DF-4E74-4EB9-B518-6F0D13F51124}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{279B345A-CC54-4259-BC67-83F0E0373264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279B345A-CC54-4259-BC67-83F0E0373264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279B345A-CC54-4259-BC67-83F0E0373264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279B345A-CC54-4259-BC67-83F0E0373264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7542D4DF-4E74-4EB9-B518-6F0D13F51124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7542D4DF-4E74-4EB9-B518-6F0D13F51124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7542D4DF-4E74-4EB9-B518-6F0D13F51124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7542D4DF-4E74-4EB9-B518-6F0D13F51124}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF581FD3-5D69-4ADA-8D83-C1B6FD7C81D2}
+	EndGlobalSection
+EndGlobal
