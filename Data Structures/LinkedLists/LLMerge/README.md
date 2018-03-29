@@ -3,4 +3,4 @@
 Given two linkd lists, merge them together in a zipper fashion
 
 ## solution
-Placeholder. Forgot to get image.
+![Whiteboard image of merge algorithm](../../assets/LLMerge.jpg)
