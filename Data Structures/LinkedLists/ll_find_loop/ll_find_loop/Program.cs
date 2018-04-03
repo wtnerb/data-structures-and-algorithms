@@ -25,6 +25,10 @@ namespace ll_find_loop
         }
 
 
+        /// <summary>
+        /// Prints a given linked list to the console. In a circular list, this will loop indefinitely.
+        /// </summary>
+        /// <param name="ll">List to print.</param>
         public static void RenderLL(LinkedList ll)
         {
             Node current = ll.Head;

@@ -104,6 +104,10 @@ namespace ll_find_loop
             return current;
         }
 
+        /// <summary>
+        /// Checks a linked list for circular reference.
+        /// </summary>
+        /// <returns>true if circular, false otherwise.</returns>
         public bool HasLoop()
         {
             try
@@ -112,6 +116,9 @@ namespace ll_find_loop
                 Node current2 = Head.Next;
                 while (current2 != current && current2.Next != current)
                     // if the fast runner is behind the slow runner, a loop is in the ll
+                    //Note: two seemingly identical nodes will not cause error. When comparing objects c#
+                    //also compares the reference. Only when refering to that exact instance will node != node
+                    //evaluate to false.
                 {
                     current = current.Next;
                     current2 = current2.Next.Next;
