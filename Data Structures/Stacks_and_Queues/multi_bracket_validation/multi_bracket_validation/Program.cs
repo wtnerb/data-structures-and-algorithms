@@ -60,13 +60,14 @@ namespace multi_bracket_validation
             }
             catch
             {
-                // only exception to be throw: null reference when poping an empty stack
-                // in that case, a bracket was opened before it was closed and is invalid.
+                // only exception should be 'null reference' when popping an empty stack
+                // in that case, a bracket was closed before it was opened and is invalid.
                 return false;
             }
             if (bracks.Peek() != null)
+                //if there are lingering unclosed brackets, invalid
                 return false;
-            // if we have cycled through and nothing causes a fail, call it valid.
+            // if no failing conditions have been found, it must be valid
             return true;
         }
     }
