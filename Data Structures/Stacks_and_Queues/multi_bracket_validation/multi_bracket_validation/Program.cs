@@ -6,7 +6,17 @@ namespace multi_bracket_validation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string[] strings = { "This string (should) pass.",
+                           "This one )should( fail.",
+                           "this one is ([Tricky)] but should fail",
+                           "Square[<] and {cur}ly brackets count but > angle brackets don't"
+                           };
+            foreach (string s in strings)
+            {
+                Console.WriteLine($"{s} ... Thinking ... valid = {Magic(s)}");
+            }
+            Console.WriteLine("\nPress any key to exit");
+            Console.ReadKey();
         }
 
         public static bool Magic (string s)
