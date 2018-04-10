@@ -1,9 +1,8 @@
-# Stacks and Queues
-## overview
-This file holds some the elementary basics of what it takes to implement a homebrew stack and queue in C#
+# Implement A Queue with two stacks
+This challenge is to simulate the desired behavior of a queue by utilizing two stacks
+## Challenge
+Using two stacks, write dequeue and enqueue methods in Program that will allow the user to enqueue and dequeue in a FIFO order.
 
-## Stack
-Imagine a todo bucket just wide enough to fit a sheet of paper. Without doing something like picking up the bucket and turning it over, the ways an office drone can interact with the internal pile of todo paperwork is simple. Remove from the top, add to the top, or peek at the top item without removing it. In code, a stack is the same thing. This is a basic C# implementation of that concept.
-
-## Queue
-A queue is like a line at the bank. The first person to arrive is helped immediately. If someone arrives while the first person is being helped, they are added to the back of the queue. Every so often, a teller will finish handling a customer and query the queue to move the farthest forwards person out of the queue and to the counter. A teller can also glance at the next person in line, decide they don't like the cut of his jib and abruptly decide to take a 15 minute break. For computers, queues are similar. You can add an item to the back, remove an item from the front, or peek the item in the back. This is a basic C# implementation of that concept.
+## Solution
+the following image is not actually a picture of the implemented solution
+![Whiteboard pseudocode](../../../assets/queue-with-stacks.jpg)

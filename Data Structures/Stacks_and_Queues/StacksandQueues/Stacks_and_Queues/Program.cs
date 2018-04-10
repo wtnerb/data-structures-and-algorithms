@@ -2,7 +2,7 @@
 
 namespace Stacks_and_Queues
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -25,6 +25,38 @@ namespace Stacks_and_Queues
             q.Render();
             q.Dequeue();
             q.Render();
+        }
+
+        /// <summary>
+        /// Treats two stacks like a queue. Add item to a queue
+        /// </summary>
+        /// <param name="q">the "queue" in question, held in a stack</param>
+        /// <param name="value">the value to be added to the queue</param>
+        /// <returns></returns>
+        static public Stack Enqueue(Stack q, int value)
+        {
+            Stack holder = new Stack();
+            //flip the queue upside down
+            while (q.Peek() != null)
+            {
+                holder.Push(q.Pop());
+            }
+
+            //Add new item to bottom of "queue" stack (it now being empty)
+            q.Push(new Node(value));
+
+            //Reload the stack with all the items that got popped.
+            while (holder.Peek() != null)
+            {
+                q.Push(holder.Pop());
+            }
+            return q;
+        }
+
+        //removes top item from queue stack
+        public static int Dequeue(Stack q)
+        {
+            return q.Pop().Value;
         }
     }
 }

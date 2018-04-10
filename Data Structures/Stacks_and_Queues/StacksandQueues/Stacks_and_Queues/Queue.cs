@@ -70,5 +70,6 @@ namespace Stacks_and_Queues
             }
             Console.WriteLine("Tail");
         }
+
     }
 }

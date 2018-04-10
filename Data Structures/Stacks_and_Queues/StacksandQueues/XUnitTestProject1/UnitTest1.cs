@@ -47,5 +47,29 @@ namespace XUnitTestProject1
             Assert.Equal(5, q.Peek().Value);
         }
 
+        [Fact]
+        public void CanSimulateEnqueue()
+        {
+            Stack s = new Stack();
+            s.Push(new Node(5));
+            s.Push(new Node(8));
+            s = Program.Enqueue(s, 3);
+            Assert.Equal(8, s.Pop().Value);
+            Assert.Equal(5, s.Pop().Value);
+            Assert.Equal(3, s.Pop().Value);
+            Assert.Null(s.Peek());
+        }
+
+        [Fact]
+        public void CanSimulateDequeue()
+        {
+            Stack s = new Stack();
+            s.Push(new Node(5));
+            s.Push(new Node(8));
+            int num = Program.Dequeue(s);
+            Assert.Equal(8, num);
+            Assert.Equal(5, s.Pop().Value);
+            Assert.Null(s.Peek());
+        }
     }
 }
