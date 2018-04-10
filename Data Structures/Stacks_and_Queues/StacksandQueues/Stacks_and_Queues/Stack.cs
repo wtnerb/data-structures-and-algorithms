@@ -55,10 +55,10 @@ namespace Stacks_and_Queues
             Console.Write("Head ");
             while (current != null)
             {
-                Console.Write($"{current.Value} --> ");
+                Console.Write($"{current.Value} -- ");
                 current = current.Next;
             }
-            Console.WriteLine();
+            Console.WriteLine("End");
         }
     }
 }
