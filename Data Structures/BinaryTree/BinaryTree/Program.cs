@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BinaryTree
+namespace Binary_Tree
 {
     class Program
     {
@@ -13,8 +13,10 @@ namespace BinaryTree
                 "  |4|   |300| \n" +
                 "  / \\     /  \\ \n" +
                 "|-5| |5| |25| |443| ");
-            BinaryTree tree = new BinaryTree();
-            tree.Root = new Node() { Value = 6, Left = null, Right = null};
+            BinaryTree tree = new BinaryTree
+            {
+                Root = new Node() { Value = 6, Left = null, Right = null }
+            };
             int[] data = new int[] { 4, 300, -5, 5, 25, 443 };
             foreach (int n in data)
             {

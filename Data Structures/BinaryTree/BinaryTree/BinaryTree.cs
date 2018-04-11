@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BinaryTree
+namespace Binary_Tree
 {
     public class BinaryTree
     {
