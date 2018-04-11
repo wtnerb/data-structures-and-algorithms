@@ -10,15 +10,16 @@ namespace BinaryTree
 
         /// <summary>
         /// Recursively traverses the tree. In a Binary Search tree, this will return the nodes in order.
+        /// This one is private. It is called initially by the overload that will pass in Root and start the traversal.
         /// </summary>
         /// <param name="source">the current node in the recursive traversal</param>
-        public void InorderTraverse(Node source)
+        private void InorderTraverse(Node source)
         {
             if (source.Left != null)
             {
                 InorderTraverse(source.Left);
             }
-            Console.WriteLine(source.Value);
+            Console.Write($"{source.Value}, ");
             if (source.Right != null)
             {
                 InorderTraverse(source.Right);
@@ -26,14 +27,17 @@ namespace BinaryTree
         }
 
         //Overload starts traverse at root of tree to begin recursive traversal
+        //This overload is the only public facing overload.
         public void InorderTraverse()
         {
             InorderTraverse(Root);
+            Console.WriteLine();
         }
 
-        public void PreorderTraverse (Node source)
+        //see InorderTraverse comments
+        private void PreorderTraverse (Node source)
         {
-            Console.WriteLine(source.Value);
+            Console.Write($"{source.Value}, ");
             if (source.Left != null)
             {
                 PreorderTraverse(source.Left);
@@ -47,11 +51,11 @@ namespace BinaryTree
         public void PreorderTraverse()
         {
             PreorderTraverse(Root);
+            Console.WriteLine();
         }
 
-        public void PostorderTraverse(Node source)
+        private void PostorderTraverse(Node source)
         {
-            Console.WriteLine(source.Value);
             if (source.Left != null)
             {
                 PostorderTraverse(source.Left);
@@ -60,14 +64,19 @@ namespace BinaryTree
             {
                 PostorderTraverse(source.Right);
             }
+            Console.Write($"{source.Value}, ");
         }
 
         public void PostorderTraverse()
         {
-            PreorderTraverse(Root);
+            PostorderTraverse(Root);
+            Console.WriteLine();
         }
 
-
+        /// <summary>
+        /// Adds a leaf to the tree. It will add a leaf to the highest, leftmost (in that order) open position.
+        /// </summary>
+        /// <param name="value">value to be added</param>
         public void Add(int value)
         {
             Node insertion = new Node
