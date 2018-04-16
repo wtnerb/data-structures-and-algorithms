@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Stacks_and_Queues
+namespace fifo_animal_shelter
 {
     public class Stack
     {

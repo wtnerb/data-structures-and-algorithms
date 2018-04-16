@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Stacks_and_Queues
+namespace fifo_animal_shelter
 {
     public class Queue
     {
@@ -32,14 +32,14 @@ namespace Stacks_and_Queues
         /// Retrieves an item from the back of the queue
         /// </summary>
         /// <returns></returns>
-        public Node Dequeue()
+        public Animal Dequeue()
         {
             try
             {
                 Node output = Tail;
                 Tail = Tail.Prev;
                 Tail.Next = null;
-                return output;
+                return output.Value;
             }
             catch
             {
