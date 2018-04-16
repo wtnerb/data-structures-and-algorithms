@@ -80,7 +80,7 @@ namespace Binary_Tree
         /// Adds a leaf to the tree. It will add a leaf to the highest, leftmost (in that order) open position.
         /// </summary>
         /// <param name="value">value to be added</param>
-        public void Add(int value)
+        public void Add(String value)
         {
             Node insertion = new Node
             {
