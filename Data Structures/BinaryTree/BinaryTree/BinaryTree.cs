@@ -8,68 +8,71 @@ namespace Binary_Tree
     {
         public Node Root { get; set; }
 
+        // In order to make traversals testable, had to refactor to use delegate
+        public delegate void Delegate(Node n);
+
         /// <summary>
         /// Recursively traverses the tree. In a Binary Search tree, this will return the nodes in order.
         /// This one is private. It is called initially by the overload that will pass in Root and start the traversal.
         /// </summary>
         /// <param name="source">the current node in the recursive traversal</param>
-        private void InorderTraverse(Node source)
+        private void InorderTraverse(Node source, Delegate lambda)
         {
             if (source.Left != null)
             {
-                InorderTraverse(source.Left);
+                InorderTraverse(source.Left, lambda);
             }
-            Console.Write($"{source.Value}, ");
+            lambda(source);
             if (source.Right != null)
             {
-                InorderTraverse(source.Right);
+                InorderTraverse(source.Right, lambda);
             }
         }
 
         //Overload starts traverse at root of tree to begin recursive traversal
         //This overload is the only public facing overload.
-        public void InorderTraverse()
+        public void InorderTraverse(Delegate lambda)
         {
-            InorderTraverse(Root);
+            InorderTraverse(Root, lambda);
             Console.WriteLine();
         }
 
         //see InorderTraverse comments
-        private void PreorderTraverse (Node source)
+        private void PreorderTraverse (Node source, Delegate lambda)
         {
-            Console.Write($"{source.Value}, ");
+            lambda(source);
             if (source.Left != null)
             {
-                PreorderTraverse(source.Left);
+                PreorderTraverse(source.Left, lambda);
             }
             if (source.Right != null)
             {
-                PreorderTraverse(source.Right);
+                PreorderTraverse(source.Right, lambda);
             }
         }
 
-        public void PreorderTraverse()
+        public void PreorderTraverse(Delegate lambda)
         {
-            PreorderTraverse(Root);
+            PreorderTraverse(Root, lambda);
             Console.WriteLine();
         }
 
-        private void PostorderTraverse(Node source)
+        private void PostorderTraverse(Node source, Delegate lambda)
         {
             if (source.Left != null)
             {
-                PostorderTraverse(source.Left);
+                PostorderTraverse(source.Left, lambda);
             }
             if (source.Right != null)
             {
-                PostorderTraverse(source.Right);
+                PostorderTraverse(source.Right, lambda);
             }
-            Console.Write($"{source.Value}, ");
+            lambda(source);
         }
 
-        public void PostorderTraverse()
+        public void PostorderTraverse(Delegate lambda)
         {
-            PostorderTraverse(Root);
+            PostorderTraverse(Root, lambda);
             Console.WriteLine();
         }
 

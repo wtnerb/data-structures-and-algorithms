@@ -50,5 +50,95 @@ namespace XUnitTestProject1
             }
             Assert.Equal(expect, current.Value);
         }
+
+        [Fact]
+        public void CanTraverseInOrder()
+        {
+            BinaryTree tree = new BinaryTree
+            {
+                Root = new Node() { Value = 6, Left = null, Right = null }
+            };
+            int[] data = new int[] { 4, 300, -5, 5, 25, 443 };
+            foreach (int n in data)
+            {
+                tree.Add(n);
+            }
+            int counter = 0;
+            int[] expect = new int[] { -5, 4, 5, 6, 25, 300, 443 };
+            int[] find = new int[data.Length + 1];
+            BinaryTree.Delegate del = x =>
+            {
+                find[counter] = x.Value;
+                counter++;
+            };
+
+            tree.InorderTraverse(del);
+
+            for (int i = 0; i < find.Length; i++)
+            {
+                Assert.Equal(find[i], expect[i]);
+            }
+            Assert.Equal(find.Length, expect.Length);
+        }
+
+        [Fact]
+        public void CanTraversePreOrder()
+        {
+            BinaryTree tree = new BinaryTree
+            {
+                Root = new Node() { Value = 6, Left = null, Right = null }
+            };
+            int[] data = new int[] { 4, 300, -5, 5, 25, 443 };
+            foreach (int n in data)
+            {
+                tree.Add(n);
+            }
+            int counter = 0;
+            int[] expect = new int[] { 6, 4, -5, 5, 300, 25, 443 };
+            int[] find = new int[data.Length + 1];
+            BinaryTree.Delegate del = x =>
+            {
+                find[counter] = x.Value;
+                counter++;
+            };
+
+            tree.PreorderTraverse(del);
+
+            for (int i = 0; i < find.Length; i++)
+            {
+                Assert.Equal(find[i], expect[i]);
+            }
+            Assert.Equal(find.Length, expect.Length);
+        }
+
+        [Fact]
+        public void CanTraversePostOrder()
+        {
+            BinaryTree tree = new BinaryTree
+            {
+                Root = new Node() { Value = 6, Left = null, Right = null }
+            };
+            int[] data = new int[] { 4, 300, -5, 5, 25, 443 };
+            foreach (int n in data)
+            {
+                tree.Add(n);
+            }
+            int counter = 0;
+            int[] expect = new int[] { -5, 5, 4, 25, 443, 300, 6 };
+            int[] find = new int[data.Length + 1];
+            BinaryTree.Delegate del = x =>
+            {
+                find[counter] = x.Value;
+                counter++;
+            };
+
+            tree.PostorderTraverse(del);
+
+            for (int i = 0; i < find.Length; i++)
+            {
+                Assert.Equal(find[i], expect[i]);
+            }
+            Assert.Equal(find.Length, expect.Length);
+        }
     }
 }
