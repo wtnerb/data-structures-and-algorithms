@@ -1,0 +1,64 @@
+﻿using System;
+using Binary_Tree;
+
+namespace FizzBuzzTree
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, building a simple tree.");
+            Console.WriteLine(
+                "     |6| -- the root\n" +
+                "     /  \\ \n" +
+                "  |4|   |300| \n" +
+                "  / \\     /  \\ \n" +
+                "|-5| |5| |25| |443| ");
+            BinaryTree tree = new BinaryTree
+            {
+                Root = new Node() { Value = "6", Left = null, Right = null }
+            };
+            BinaryTree.Delegate l = x =>
+            {
+                Console.Write(x.Value + " ");
+            };
+            string[] data = new string[] { "4", "300", "-5", "5", "25", "443" };
+            foreach (string n in data)
+            {
+                tree.Add(n);
+            }
+
+            Console.WriteLine("The new tree looks like:");
+            tree = FizzBuzz(tree);
+            BinaryTree.Delegate print = x => Console.Write($"{x.Value} ");
+            tree.InorderTraverse(print);
+            Console.WriteLine();
+            Console.WriteLine("It should look like\n" +
+                "buzz 4 buzz fizz buzz fizzbuzz 443");
+            Console.ReadKey();
+        }
+
+        public static BinaryTree FizzBuzz (BinaryTree tree)
+        {
+            //Because my traversal methods use delegates, I only have to write a FizzBuzz delegate
+            BinaryTree.Delegate fizzBuzz = x =>
+            {
+                if (int.Parse(x.Value) % 15 == 0)
+                {
+                    x.Value = "fizzbuzz";
+                }
+                else if (int.Parse(x.Value) % 5 == 0)
+                {
+                    x.Value = "buzz";
+                }
+                else if (int.Parse(x.Value) % 3 == 0)
+                {
+                    x.Value = "fizz";
+                }
+            };
+
+            tree.InorderTraverse(fizzBuzz);
+            return tree;
+        }
+    }
+}
