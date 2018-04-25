@@ -9,6 +9,7 @@ namespace XUnitTestProject1
         [Fact]
         public void CanMakeNode()
         {
+            //prove that the improved default ctor works
             Assert.NotNull(new Node<string>());
             Node<int> node2 = new Node<int>();
             Assert.NotNull(node2.Children);
@@ -17,20 +18,25 @@ namespace XUnitTestProject1
         [Fact]
         public void CanMakeNodeWithArray()
         {
+            //prove that ctor with array of child values works
             byte[] arr = new byte[] { 1, 5, 3, 6, 7, 9 };
             Node<byte> n = new Node<byte>(4, arr);
-            Assert.Equal(4, n.Value);
+
+            //assert
+            Assert.Equal(4, n.Value);// node value is right
             byte i = 0;
             foreach (Node<byte> node in n.Children)
             {
-                Assert.Equal(node.Value, arr[i]);
+                Assert.Equal(node.Value, arr[i]);//child nodes are right
                 i++;
             }
+            Assert.Equal(arr.Length, i);//length of chilren and initializer match
         }
 
         [Fact]
         public void CanMakeTree()
         {
+            //ctor makes a thing
             Tree<int> t = new Tree<int>(5);
             Assert.NotNull(t.Root);
         }
@@ -38,6 +44,7 @@ namespace XUnitTestProject1
         [Fact]
         public void CanMakeTreeWithNode()
         {
+            //other ctor makes a thing
             byte[] arr = new byte[] { 1, 5, 3, 6, 7, 9 };
             Node<byte> n = new Node<byte>(4, arr);
             Tree<byte> t = new Tree<byte>(n);
@@ -47,6 +54,7 @@ namespace XUnitTestProject1
         [Fact]
         public void CanTraverseBreadthFirst()
         {
+            //traversing breadth first will get expected results
             byte[] arr = new byte[] { 1, 5, 3, 6, 7, 9 };
             Node<byte> n = new Node<byte>(4, arr);
             Tree<byte> t = new Tree<byte>(n);
@@ -58,6 +66,8 @@ namespace XUnitTestProject1
 
             byte[] expected = new byte[] { 4, 1, 5, 3, 6, 7, 9, 0, 3, 4, 7, 2, 5, 5, 8, 6, 9, 8, 11 };
             byte count = 0;
+
+            //Assert
             Tree<byte>.Method iterAssert = node =>
             {
                 Assert.Equal(expected[count], node.Value);
@@ -69,13 +79,14 @@ namespace XUnitTestProject1
         [Fact]
         public void CanAdd()
         {
-            byte[] arr = new byte[] { 1, 5, 3, 6, 7, 9 };
-            Node<byte> n = new Node<byte>(4, arr);
+            //When using Add method, resulting tree is as expected
+            byte[] arr = new byte[] { 11, 5, 13, 16, 17};
+            Node<byte> n = new Node<byte>(14, arr);
             Tree<byte> t = new Tree<byte>(n);
-            t.Add(5, 5);
-            t.Add(5, 6);
-            t.Add(5, 4);
-            byte[] expected = new byte[] { 4, 1, 5, 3, 6, 7, 9, 5, 6, 4 };
+            t.Add(5, 5); // can add
+            t.Add(5, 6); // will add to correct duplicate
+            t.Add(5, 4); // will add to end of child list
+            byte[] expected = new byte[] { 14, 11, 5, 13, 16, 17, 5, 6, 4 };
             byte count = 0;
             Tree<byte>.Method iterAssert = node =>
             {
