@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using K_aryTrees;
 
 namespace PrintLevelOrder
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -25,40 +26,40 @@ namespace PrintLevelOrder
             Tree<char>.Method renderInLine = n => Console.Write($"{n.Value} ");
             tree.BreadthFirstTraverse(renderInLine);
 
-            Console.WriteLine();
-            PrintLevelOrder(tree);
+            Console.WriteLine(PrintLevelOrder(tree));
 
             Console.ReadKey();
         }
 
-        static void PrintLevelOrder(Tree<char> tree)
+        public static string PrintLevelOrder(Tree<char> tree)
         {
             Queue<Node<char>> q = new Queue<Node<char>>();
-            Node<char> placeholder = new Node<char> ('\n');
+            //By making sentinel a Node of value newline, the newline printing each time sentinel is found is automated
+            Node<char> sentinel = new Node<char> ('\n');
+            StringBuilder sb = new StringBuilder();
             q.Enqueue(tree.Root);
-            q.Enqueue((placeholder));
+            q.Enqueue(sentinel);
             Console.WriteLine("Begining to print level order:");
             while (q.TryDequeue(out Node<char> current))
             {
-                Console.Write($"{current.Value} ");
+                sb.Append($"{current.Value} ");
                 foreach (Node<char> child in current.Children)
                 {
                     q.Enqueue(child);
                 }
-                if (current == placeholder)//Equality only occurs if same reference as placeholder
+                if (current == sentinel)//Equality only occurs if same reference as placeholder
                 {
-                    Console.WriteLine();
                     try
                     {
                         q.Peek();
-                        q.Enqueue(placeholder);
+                        q.Enqueue(sentinel);
                     }
                     catch
-                    {
-                    }
+                    {}
                 }
             }
-            Console.WriteLine("Done printing.");
+            Console.WriteLine("built string");
+            return sb.ToString();
         }
     }
 }
