@@ -4,7 +4,7 @@ using System.Text;
 
 namespace K_aryTrees
 {
-    class Node<T>
+    public class Node<T>
     {
         public Node()
         {

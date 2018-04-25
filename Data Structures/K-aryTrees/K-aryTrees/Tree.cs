@@ -2,7 +2,7 @@
 
 namespace K_aryTrees
 {
-    class Tree<T>
+    public class Tree<T>
     {
         public Tree(Node<T> root)
         {
