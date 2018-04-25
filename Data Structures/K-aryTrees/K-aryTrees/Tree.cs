@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace KaryTrees
+namespace K_aryTrees
 {
     class Tree<T>
     {
         public Tree(Node<T> root)
         {
             Root = root;
+        }
+
+        public Tree(T rootValue)
+        {
+            Root = new Node<T>() { Value = rootValue };
         }
 
         public Node<T> Root { get; set; }
@@ -56,6 +61,7 @@ namespace KaryTrees
                 if (!added && current.Value.Equals(target))
                 {
                     current.Children.Add(new Node<T> { Value = addition });
+                    added = true;
                 }
             }
             BreadthFirstTraverse(AddConditionally);
