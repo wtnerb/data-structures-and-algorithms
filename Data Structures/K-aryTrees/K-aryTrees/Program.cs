@@ -18,10 +18,10 @@ namespace K_aryTrees
             Node<byte> left = new Node<byte>(3, new byte[] { 5, 4, 2 });//test ctor
             tree.Root.Children.Add(left);
             tree.Add(6, 7);//add works
-            tree.Add(7, 1);
+            tree.Add(7, 1);//add working means breadth first works
             tree.Add(7, 7);//duplicate val in correct place
             tree.Add(7, 9);//Adds new to highest duplicate, adds only once
-            Console.WriteLine("Breadth first traverse: ");
+            Console.WriteLine("Pre Order traverse: ");
             Tree<byte>.Method render = x => Console.Write($"{x.Value} ");
             tree.PreOrderTraverse(render);
             Console.ReadKey();
