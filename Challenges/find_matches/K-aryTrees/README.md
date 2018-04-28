@@ -24,4 +24,4 @@ Given a tree and a target value, return a list of all nodes in the tree with a v
 ```
 
 ## Solution
-![Whiteboard](../../../assets.find_matches.jpg)
+![Whiteboard](../../../assets/find_matches.jpg )
