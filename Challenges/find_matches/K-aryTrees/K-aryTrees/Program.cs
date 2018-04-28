@@ -23,25 +23,30 @@ namespace K_aryTrees
             tree.Add(7, 7);//duplicate val in correct place
             tree.Add(7, 9);//Adds new to highest duplicate, adds only once
             Console.WriteLine("We want to find all the nodes in this tree with");
-            Console.WriteLine("a value of 7.")
-            List<Node<int>> nodes = FindMatches(tree, 7)
+            Console.WriteLine("a value of 7.");
+            List<Node<byte>> nodes = FindMatches(tree, 7);
             System.Console.WriteLine("Finding ...");
             System.Console.WriteLine($"{nodes.Count} matches found");
             Tree<byte>.Method render = x => Console.Write($"{x.Value} ");
-            foreach (Node<int> node in nodes)
+            foreach (Node<byte> node in nodes)
             {
-                tree.PreOrderTraverse(render);                
+                Console.Write("Match: ");
+                Tree<byte> t = new Tree<byte>(node);
+                t.PreOrderTraverse(render);
+                Console.WriteLine();
             }
             Console.ReadKey();
             
         }
 
-        public IEnumerable<Node<int>> FindMatches(Tree<int> tree, int target)
+        public static List<Node<byte>> FindMatches(Tree<byte> tree, byte target)
         {
-            new List<Node<int>> output
-            tree.Method MatchesToCollection = x => 
+            List<Node<byte>> output = new List<Node<byte>>();
+            Tree<byte>.Method MatchesToCollection = x =>
+            {
                 if (x.Value == target)
                     output.Add(x);
+            };
             tree.PreOrderTraverse(MatchesToCollection);
             return output;
         }
