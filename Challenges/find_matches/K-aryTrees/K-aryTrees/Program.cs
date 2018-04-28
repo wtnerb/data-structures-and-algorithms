@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace K_aryTrees
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -25,8 +25,8 @@ namespace K_aryTrees
             Console.WriteLine("We want to find all the nodes in this tree with");
             Console.WriteLine("a value of 7.");
             List<Node<byte>> nodes = FindMatches(tree, 7);
-            System.Console.WriteLine("Finding ...");
-            System.Console.WriteLine($"{nodes.Count} matches found");
+            Console.WriteLine("Finding ...");
+            Console.WriteLine($"{nodes.Count} matches found");
             Tree<byte>.Method render = x => Console.Write($"{x.Value} ");
             foreach (Node<byte> node in nodes)
             {

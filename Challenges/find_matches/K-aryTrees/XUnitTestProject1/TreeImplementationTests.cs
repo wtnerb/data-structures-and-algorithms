@@ -4,8 +4,9 @@ using K_aryTrees;
 
 namespace XUnitTestProject1
 {
-    public class UnitTest1
+    public class TreeImplementationTests
     {
+        //OLD TESTS: these are the tests from implementation
         [Fact]
         public void CanMakeNode()
         {
