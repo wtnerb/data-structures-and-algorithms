@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace K_aryTrees
 {
@@ -26,6 +27,16 @@ namespace K_aryTrees
             tree.PreOrderTraverse(render);
             Console.ReadKey();
             
+        }
+
+        public IEnumerable<Node<int>> FindMatches(Tree<int> tree, int target)
+        {
+            new List<Node<int>> output
+            tree.Method MatchesToCollection = x => 
+                if (x.Value == target)
+                    output.Add(x);
+            tree.PreOrderTraverse(MatchesToCollection);
+            return output;
         }
     }
 }
