@@ -18,12 +18,38 @@ namespace XUnitTestProject1
             byte[] arr = new byte[] { 11, 5, 13, 16, 17 };
             Node<byte> n = new Node<byte>(14, arr);
             Tree<byte> t = new Tree<byte>(n);
-            t.Add(5, 5); // can add
-            t.Add(5, 6); // will add to correct duplicate
-            t.Add(5, 4); // will add to end of child list
+            t.Add(5, 5);
+            t.Add(5, 6);
+            t.Add(5, 4);
 
             //Act
             IEnumerable<Node<byte>> result = Program.FindMatches(t, target);
+
+            //Assert
+            Assert.Empty(result);
+        }
+
+        [Theory]
+        [InlineData(4, 3)]
+        [InlineData(14, 1)]//finds root
+        [InlineData(16, 2)]
+        public void DoesFindCorrectNumberOfMatches(byte target, byte expected)
+        {
+            //Arrange
+            byte[] arr = new byte[] { 11, 5, 13, 16, 17 };
+            Node<byte> n = new Node<byte>(14, arr);
+            Tree<byte> t = new Tree<byte>(n);
+            t.Add(5, 15);
+            t.Add(5, 16);
+            t.Add(5, 4);
+            t.Add(15, 4);
+            t.Add(17, 4);
+
+            //Act
+            List<Node<byte>> result = Program.FindMatches(t, target);
+
+            //Assert
+            Assert.Equal(expected, result.Count);
         }
     }
 }
