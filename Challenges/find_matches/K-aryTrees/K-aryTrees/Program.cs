@@ -22,9 +22,16 @@ namespace K_aryTrees
             tree.Add(7, 1);//add working means breadth first works
             tree.Add(7, 7);//duplicate val in correct place
             tree.Add(7, 9);//Adds new to highest duplicate, adds only once
-            Console.WriteLine("Pre Order traverse: ");
+            Console.WriteLine("We want to find all the nodes in this tree with");
+            Console.WriteLine("a value of 7.")
+            List<Node<int>> nodes = FindMatches(tree, 7)
+            System.Console.WriteLine("Finding ...");
+            System.Console.WriteLine($"{nodes.Count} matches found");
             Tree<byte>.Method render = x => Console.Write($"{x.Value} ");
-            tree.PreOrderTraverse(render);
+            foreach (Node<int> node in nodes)
+            {
+                tree.PreOrderTraverse(render);                
+            }
             Console.ReadKey();
             
         }
