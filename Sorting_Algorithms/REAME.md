@@ -1,0 +1,2 @@
+# Sorting Algorithms
+In computer science, sorting algorithms are some of the more fundamental problems. Sorting is an incredibly common problem, and having a good knowledge of the different sorts and their applications can be vital to writing good code. Here are a variety of simple implementations of common sorting algorithms.
