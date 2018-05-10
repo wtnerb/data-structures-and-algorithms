@@ -2,40 +2,73 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HashTable
+namespace Hash_Table
 {
-    public class HashTable<T>
+    public class HashTable
     {
-        public Node<T>[] Map { get; set; }
+        public Node[] Map { get; set; }
 
         public HashTable()
         {
-            Map = new Node<T>[5000];
+            Map = new Node[4327];//moderately large prime number
         }
 
-        public int Hash(T val)
+        public int Hash(string key)
         {
-            int n = 0;
-            long num = 0;
-            if (val is string)
+            int num = 0;
+            foreach (char c in key.ToString())
             {
-                foreach (char c in val.ToString())
-                {
-                    n++;
-                    num += c - 90 + F(n);
-                }
-            }
-            if (val is int)
-            {
-                num = (int)val;
+                num += c - 90;
             }
 
             return (int)num % Map.Length;
         }
 
-        public int F(int number)
+        /// <summary>
+        /// Adds a value to the hash table. Requires a key-value pair to be added to the table
+        /// </summary>
+        /// <param name="key">key of key-value pair</param>
+        /// <param name="value">vlaue of key-value pair</param>
+        public void Add (string key, string value)
         {
-            
+            int hash = Hash(key);
+            Node addition = new Node(key, value);
+            if (Map[hash] == null)
+            {
+                Map[hash] = addition;
+            }
+            else
+            {
+                Node current = Map[hash];
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+                current.Next = addition;
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if anything with that key is contained in the map
+        /// </summary>
+        /// <param name="key">Key to check for existence</param>
+        /// <returns>true if found, false if not</returns>
+        public bool Contains (string key)
+        {
+            int hash = Hash(key);
+            if (Map[hash] != null)
+            {
+                Node current = Map[hash];
+                while (current.Key != key && current.Next != null)
+                {
+                    current = current.Next;
+                }
+                if (current.Key == key)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
