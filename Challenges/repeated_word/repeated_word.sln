@@ -7,12 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "repeated_word", "repeated_w
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingWords", "TestingWords\TestingWords.csproj", "{D2C6D52E-C4E4-4856-B2EB-8C25C1933843}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5143C9D-28A0-40F2-893C-84AFE528B540}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\Data Structures\HashTable\HashTable\HashTable.cs = ..\..\Data Structures\HashTable\HashTable\HashTable.cs
-		..\..\Data Structures\HashTable\HashTable\Node.cs = ..\..\Data Structures\HashTable\HashTable\Node.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
