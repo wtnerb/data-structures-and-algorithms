@@ -5,4 +5,4 @@ Quick sort is an algorithim that work by selecting a pivot and then comparing th
 Implement a merge sort for an array of integers.
 
 ## Solution
-I forgot to take a picture of this whiteboard.
+![whiteboard of algorithm](../../assets/QuickSort.jpg)
