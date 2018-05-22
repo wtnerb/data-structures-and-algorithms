@@ -7,6 +7,7 @@ namespace Hash_Table
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            HashTable ht = new HashTable();
         }
     }
 }

@@ -13,12 +13,19 @@ namespace Hash_Table
             Map = new Node[4327];//moderately large prime number
         }
 
+        /// <summary>
+        /// Takes in a string value and returns a numeric hash. The hash is small enough it could be a ushort
+        /// but the process is simpler to treat it as an int
+        /// </summary>
+        /// <param name="key">thing to be hashed</param>
+        /// <returns>numeric hash value</returns>
         public int Hash(string key)
         {
             int num = 0;
+            int count = 1; // count will prevent act and cat from producing same results
             foreach (char c in key.ToString())
             {
-                num += c - 90;
+                num += (c - 90) * count++;
             }
 
             return (int)num % Map.Length;
@@ -29,7 +36,7 @@ namespace Hash_Table
         /// </summary>
         /// <param name="key">key of key-value pair</param>
         /// <param name="value">vlaue of key-value pair</param>
-        public void Add (string key, string value)
+        public void Add (string key, int value)
         {
             int hash = Hash(key);
             Node addition = new Node(key, value);

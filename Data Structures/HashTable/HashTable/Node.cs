@@ -8,9 +8,9 @@ namespace Hash_Table
     {
         public string Key { get; set; }
         public Node Next { get; set; }
-        public string Value { get; set; }
+        public int Value { get; set; }
 
-        public Node (string key, string value)
+        public Node (string key, int value)
         {
             Key = key;
             Value = value;
