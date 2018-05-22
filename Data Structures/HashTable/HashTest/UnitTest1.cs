@@ -17,7 +17,7 @@ namespace HashTest
         public void HashesAreDistinct()
         {
             HashTable table = new HashTable();
-            Assert.NotEqual(table.Hash("cat"), table.Hash("acts"));
+            Assert.NotEqual(table.Hash("cat"), table.Hash("act"));
         }
 
         [Fact]
@@ -26,17 +26,17 @@ namespace HashTest
             HashTable table = new HashTable();
             string test = "blue";
             int hash = table.Hash(test);
-            table.Add(test, "test1");
-            table.Add(test, "test2");
-            Assert.Equal("test1", table.Map[hash].Value);
-            Assert.Equal("test2", table.Map[hash].Next.Value);
+            table.Add(test, 47);
+            table.Add(test, -32);
+            Assert.Equal(47, table.Map[hash].Value);
+            Assert.Equal(-32, table.Map[hash].Next.Value);
         }
 
         [Fact] void CanFind()
         {
             HashTable table = new HashTable();
             string test = "blue";
-            table.Add(test, "test1");
+            table.Add(test, 43);
             Assert.True(table.Contains(test));
             Assert.False(table.Contains(test + "r"));
         }
