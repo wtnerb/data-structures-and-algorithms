@@ -10,17 +10,29 @@ namespace HeapTesting
         public void CanStartHeap()
         {
             Max_Heap mh = new Max_Heap(new int[]{5});
-            Assert.True(mh.Root.Val == 5);
+            Assert.Equal(5, mh.Root.Val);
         }
 
         [Fact]
         public void CanBuildHeap(){
             Max_Heap mh = new Max_Heap(new int[]{5, 4, 3, 2, 1});
-            Assert.True(mh.Root.Val == 5);
-            Assert.True(mh.Root.Left.Val == 4);
-            Assert.True(mh.Root.Right.Val == 3);
-            Assert.True(mh.Root.Right.Left.Val == 2);
-            Assert.True(mh.Root.Right.Right.Val == 1);
+            Assert.Equal(5, mh.Root.Val);
+            Assert.Equal(4, mh.Root.Left.Val);
+            Assert.Equal(3, mh.Root.Right.Val);
+            Assert.Equal(2, mh.Root.Left.Left.Val);
+            Assert.Equal(1, mh.Root.Left.Right.Val);
+        }
+
+        [Fact]
+        public void CanPutHeapIntoArray(){
+            int [] startArr = new int[]{9, 8, 7, 6, 5, 4};
+            Max_Heap mh = new Max_Heap(startArr);
+            int[] endArr = mh.ToArray();
+            for (int i = 0; i < startArr.Length; i++)
+            {
+                Assert.Equal(startArr[i], endArr[i]);
+            }
+            Assert.Equal(startArr.Length, endArr.Length);
         }
     }
 }
