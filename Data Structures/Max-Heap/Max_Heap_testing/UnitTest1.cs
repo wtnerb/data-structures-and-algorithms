@@ -5,20 +5,12 @@ namespace HeapTesting
 {
     public class UnitTest1
     {
-        [Fact]
-        // Proof of life
-        public void CanStartHeap()
-        {
-            Max_Heap mh = new Max_Heap(new int[] { 5 });
-            Assert.Equal(5, mh.Root.Val);
-        }
-
         // Checks that:
         [Theory]
         // A heap can be built
         [InlineData(new int[] { 5, 4, 3, 2, 1 }, new int[] { 5, 4, 3, 2, 1 })]
-        // Some basic maxing does occur
-        [InlineData(new int[] { 5, 4, 3, 2, 5 }, new int[] { 5, 5, 3, 2, 4 })]
+        // Some basic maxing does occur, handles single child
+        [InlineData(new int[] { 5, 4, 3, 2, 5, 3 }, new int[] { 5, 5, 3, 2, 4, 3 })]
         // A more thorough testing that the maxing process works as intended
         [InlineData(new int[] { 5, 4, 3, 6, 5, 2, 8 }, new int[] { 8, 6, 5, 4, 5, 2, 3 })]
         public void CanBuildMaxHeap(int[] arr, int[] maxedArr)
@@ -35,11 +27,11 @@ namespace HeapTesting
             int[] startArr = new int[] { 9, 8, 7, 6, 5, 4 };
             Max_Heap mh = new Max_Heap(startArr);
             int[] endArr = mh.ToArray();
+            Assert.Equal(startArr.Length, endArr.Length);
             for (int i = 0; i < startArr.Length; i++)
             {
                 Assert.Equal(startArr[i], endArr[i]);
             }
-            Assert.Equal(startArr.Length, endArr.Length);
         }
 
         // checks that arrays match tooling works, is essential for other tests

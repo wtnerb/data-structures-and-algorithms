@@ -5,128 +5,106 @@ public class Max_Heap
 {
     public Node Root { get; set; }
 
-    ///Constructor converts from array to heap, assume given array is a max heap (for now)
+    private List<int> Heap { get; set; }
+
+    ///Constructor converts from array to max heap
     public Max_Heap(int[] nums)
     {
-        if (nums.Length == 0)
-        {
-            throw new Exception("empty initializer");
-        }
-        var heapify = new Stack<Node>();
-        Queue<Node> q = new Queue<Node>();
-        Root = new Node();
-        Root.Val = nums[0];
-        q.Enqueue(Root);
+        Heap = new List<int>(nums);
 
-        for (int i = 1; i < nums.Length - 1; i += 2)
+        // loop across parents to enforce max heap property
+        int highestParentIndex = (Heap.Count - 1) / 2;
+        for (int i = highestParentIndex; i >=0; i--)
         {
-            Node current = q.Dequeue();
-            current.Left = new Node(nums[i]);
-            current.Right = new Node(nums[i + 1]);
-            q.Enqueue(current.Left);
-            q.Enqueue(current.Right);
+            MaxHeapify(i);
         }
-        if (nums.Length % 2 != 1)
-        {
-            Node current = q.Dequeue();
-            current.Left = new Node(nums[nums.Length - 1]);
-        }
-        MaxHeapify(Root);
     }
-    ///For testing purposes, it can be useful to convert a max heap back into an array
+
+    /// For testing purposes, it can be useful to convert a max heap back into an array
+    /// Relic from when heaps were actually a binary tree and making an array was work
     public int[] ToArray()
     {
-        Queue<Node> q = new Queue<Node>();
-        Node current = Root;
-        List<int> l = new List<int>();
-        while (current != null)
-        {
-            l.Add(current.Val);
-            q.Enqueue(current.Left);
-            q.Enqueue(current.Right);
-            current = q.Dequeue();
-        }
-        return l.ToArray();
+        return Heap.ToArray();
     }
 
-    /// This assumes the root is the only node in violation of the max-heap rule.
-    /// All subtrees are assumed to comply with max-heap rule. Recursively will
-    /// check if there is a violation, and if so swap parent with largest child
-    /// and recurr until their is no violation (because node has no larger children)
-    /// This is accomplished easiest by swapping values.
-    private void MaxHeapify(Node root)
+    /// This assumes the value at 'index' is the only value that might be in violation
+    /// of the max heap rule. 
+    private void MaxHeapify(int index)
     {
-        // Base case
-        if (root == null)
+        var children = ChildIndexes(index);
+        switch (children.Length)
         {
-            return;
+            case 0:
+                // When no children exist, the max heap property cannot be violated.
+                break;
+            case 1:
+                // With one child, make simple check for max heap property, swap if needed
+                if (Heap[index] < Heap[children[0]])
+                {
+                    Swap(index, children[0]);
+                }
+                break;
+            default:
+                // if left child is bigger than right child and current, swap with current
+                if (Heap[index] < Heap[children[0]] && Heap[children[0]] > Heap[children[1]])
+                {
+                    Swap(index, children[0]);
+                    MaxHeapify(Parent(index));
+                    break;
+                }
+
+                // If right child is larger than current, it must be at least equal to right child
+                if (Heap[index] < Heap[children[1]])
+                {
+                    Swap(index, children[1]);
+                    MaxHeapify(Parent(index));
+                }
+
+                break;
         }
 
-        //Recurr, so that entire tree below root is max-heapified
-        MaxHeapify(root.Left);
-        MaxHeapify(root.Right);
-
-        // The logic from here requires that the subtrees be max trees
-
-        //Guard clauses
-        if (root.Left == null)
-        {
-            if (root.Right == null)
-            {
-                //Do nothing to a leaf
-                return;
-            }
-            if (!(root.Right.Val > root.Val))
-            {
-                //All is as expected
-                return;
-            }
-            else
-            {
-                //Fix at this level of the heap, recurr down a level
-                Swap(root, root.Left);
-                MaxHeapify(root.Left);
-            }
-        }
-        if (root.Right == null)
-        {
-            if (!(root.Left.Val > root.Val))
-            {
-                // No work needs to be done
-                return;
-            }
-            else
-            {
-                // Fix this level of the heap, recurr down a level
-                Swap(root, root.Right);
-                MaxHeapify(root.Right);
-            }
-        }
-        //End of guard clauses
-
-        //If in the middle of the heap, and a node is out of order
-        //(has a child larger than itself)
-        if (root.Val < root.Left.Val || root.Val < root.Right.Val)
-        {
-            //Swap largest of child values for parent, fixing this level of the heap
-            //Recurr down to the next level of the heap
-            if (root.Left.Val > root.Right.Val)
-            {
-                Swap(root, root.Left);
-                MaxHeapify(root.Left);
-            }
-            else
-            {
-                Swap(root, root.Right);
-                MaxHeapify(root.Right);
-            }
-        }
     }
 
-    private void Swap(Node n1, Node n2)
+    /// <summary>
+    /// finds the index of the 'parent node' given the index of the 'current node'
+    /// </summary>
+    /// <param name="index">index of the current 'node'</param>
+    /// <returns>index of the parent 'node'</returns>
+    private int Parent(int index)
     {
-        int temp = n1.Val;
-        n1.Val = n2.Val;
-        n2.Val = temp;
+        return (index - 1) / 2;
+    }
+
+    /// <summary>
+    /// Swaps two values in the underlying List based on index
+    /// </summary>
+    /// <param name="index">index of first value</param>
+    /// <param name="target">index of second value</param>
+    private void Swap(int index, int target)
+    {
+        int temp = Heap[index];
+        Heap[index] = Heap[target];
+        Heap[target] = temp;
+    }
+
+    /// <summary>
+    /// Finds indexes of the 'child nodes' of the current node given its index.
+    /// </summary>
+    /// <param name="index">location of current node in the list</param>
+    /// <returns>array of children sized appropriate to number of children</returns>
+    private int[] ChildIndexes(int index)
+    {
+        int doubling = (index + 1) * 2;
+        if (doubling > Heap.Count)
+        {
+            return new int[] { };
+        }
+
+        if (doubling == Heap.Count)
+        {
+            return new int[] { doubling - 1 };
+        }
+
+        return new int[] { doubling - 1, doubling };
     }
 }
