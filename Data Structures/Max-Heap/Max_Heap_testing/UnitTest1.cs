@@ -9,13 +9,13 @@ namespace HeapTesting
         //Proof of life
         public void CanStartHeap()
         {
-            Max_Heap mh = new Max_Heap(new int[]{5});
+            Max_Heap mh = new Max_Heap(new int[] { 5 });
             Assert.Equal(5, mh.Root.Val);
         }
 
         [Theory]
-        [InlineData(new int[]{5, 4, 3, 2, 1}, new int[]{5, 4, 3, 2, 1})]
-        [InlineData(new int[]{5, 4, 3, 2, 5}, new int[]{5, 5, 4, 3, 2})]
+        [InlineData(new int[] { 5, 4, 3, 2, 1 }, new int[] { 5, 4, 3, 2, 1 })]
+        [InlineData(new int[] { 5, 4, 3, 2, 5 }, new int[] { 5, 5, 4, 3, 2 })]
         public void CanBuildHeap(int[] arr, int[] maxedArr)
         {
             Max_Heap mh = new Max_Heap(arr);
@@ -26,7 +26,7 @@ namespace HeapTesting
         [Fact]
         public void CanPutHeapIntoArray()
         {
-            int [] startArr = new int[]{9, 8, 7, 6, 5, 4};
+            int[] startArr = new int[] { 9, 8, 7, 6, 5, 4 };
             Max_Heap mh = new Max_Heap(startArr);
             int[] endArr = mh.ToArray();
             for (int i = 0; i < startArr.Length; i++)
@@ -37,19 +37,19 @@ namespace HeapTesting
         }
 
         [Theory]
-        [InlineData(new int[]{9, 8, 7, 6, 5, 4}, new int[]{9, 8, 7, 6, 5, 4}, true)]
-        [InlineData(new int[]{9, 8, 7, 6, 9, 4}, new int[]{9, 9, 7, 6, 8, 4}, false)]
-        [InlineData(new int[]{9, 8, 7, 6, 9, 4}, new int[]{10, 8, 7, 6, 5, 4}, false)]
-        [InlineData(new int[]{9, 8, 7, 6, 9, 4}, new int[]{9, 8, 7, 6, 5, 2}, false)]
-        public void ArraysMatchVerification (int[] start, int[] finish, bool expect)
+        [InlineData(new int[] { 9, 8, 7, 6, 5, 4 }, new int[] { 9, 8, 7, 6, 5, 4 }, true)]
+        [InlineData(new int[] { 9, 8, 7, 6, 9, 4 }, new int[] { 9, 9, 7, 6, 8, 4 }, false)]
+        [InlineData(new int[] { 9, 8, 7, 6, 9, 4 }, new int[] { 10, 8, 7, 6, 5, 4 }, false)]
+        [InlineData(new int[] { 9, 8, 7, 6, 9, 4 }, new int[] { 9, 8, 7, 6, 5, 2 }, false)]
+        public void ArraysMatchVerification(int[] start, int[] finish, bool expect)
         {
             bool actual = ArraysMatch(start, finish);
             Assert.Equal(expect, actual);
         }
 
         [Theory]
-        [InlineData(new int[]{9, 8, 7, 6, 5, 4}, new int[]{9, 8, 7, 6, 5, 4}, "LR")]
-        [InlineData(new int[]{9, 8, 7, 6, 9, 4}, new int[]{9, 9, 7, 6, 8, 4}, "L")]
+        [InlineData(new int[] { 9, 8, 7, 6, 5, 4 }, new int[] { 9, 8, 7, 6, 5, 4 }, "LR")]
+        [InlineData(new int[] { 9, 8, 7, 6, 9, 4 }, new int[] { 9, 9, 7, 6, 8, 4 }, "L")]
         public void CanHeapify(int[] startArr, int[] targetArr, string path)
         {
             Max_Heap mh = new Max_Heap(startArr);
@@ -59,7 +59,7 @@ namespace HeapTesting
         }
 
 
-        private Node Path (Node root, string path)
+        private Node Path(Node root, string path)
         {
             path = path.ToUpper();
             foreach (char c in path)
@@ -81,7 +81,7 @@ namespace HeapTesting
         }
 
 
-    private bool ArraysMatch(int[] arr1, int[] arr2)
+        private bool ArraysMatch(int[] arr1, int[] arr2)
         {
             if (arr1.Length != arr2.Length)
             {
