@@ -6,16 +6,20 @@ namespace HeapTesting
     public class UnitTest1
     {
         [Fact]
-        //Proof of life
+        // Proof of life
         public void CanStartHeap()
         {
             Max_Heap mh = new Max_Heap(new int[] { 5 });
             Assert.Equal(5, mh.Root.Val);
         }
 
+        // Checks that:
         [Theory]
+        // A heap can be built
         [InlineData(new int[] { 5, 4, 3, 2, 1 }, new int[] { 5, 4, 3, 2, 1 })]
+        // Some basic maxing does occur
         [InlineData(new int[] { 5, 4, 3, 2, 5 }, new int[] { 5, 5, 3, 2, 4 })]
+        // A more thorough testing that the maxing process works as intended
         [InlineData(new int[] { 5, 4, 3, 6, 5, 2, 8 }, new int[] { 8, 6, 5, 4, 5, 2, 3 })]
         public void CanBuildMaxHeap(int[] arr, int[] maxedArr)
         {
@@ -24,6 +28,7 @@ namespace HeapTesting
             Assert.True(ArraysMatch(maxedArr, actual));
         }
 
+        // Checks tooling that a max heap can be turned into an array
         [Fact]
         public void CanPutHeapIntoArray()
         {
@@ -37,6 +42,7 @@ namespace HeapTesting
             Assert.Equal(startArr.Length, endArr.Length);
         }
 
+        // checks that arrays match tooling works, is essential for other tests
         [Theory]
         [InlineData(new int[] { 9, 8, 7, 6, 5, 4 }, new int[] { 9, 8, 7, 6, 5, 4 }, true)]
         [InlineData(new int[] { 9, 8, 7, 6, 9, 4 }, new int[] { 9, 9, 7, 6, 8, 4 }, false)]
@@ -48,28 +54,7 @@ namespace HeapTesting
             Assert.Equal(expect, actual);
         }
 
-        private Node Path(Node root, string path)
-        {
-            path = path.ToUpper();
-            foreach (char c in path)
-            {
-                if (c == 'L')
-                {
-                    root = root.Left;
-                }
-                else if (c == 'R')
-                {
-                    root = root.Right;
-                }
-                else
-                {
-                    throw new Exception("invalid path in test");
-                }
-            }
-            return root;
-        }
-
-
+        // Helper function that checks arrays value by value for equivalence
         private bool ArraysMatch(int[] arr1, int[] arr2)
         {
             if (arr1.Length != arr2.Length)
