@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Max-Heap", "Max-Heap\Max-Heap.csproj", "{854AB1B0-A1B1-462A-8027-4C5648E693A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Max_Heap_testing", "Max_Heap_testing\Max_Heap_testing.csproj", "{567DDDA4-BAE3-4DFC-B408-1DC9F83C5F39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{854AB1B0-A1B1-462A-8027-4C5648E693A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854AB1B0-A1B1-462A-8027-4C5648E693A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854AB1B0-A1B1-462A-8027-4C5648E693A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854AB1B0-A1B1-462A-8027-4C5648E693A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{567DDDA4-BAE3-4DFC-B408-1DC9F83C5F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567DDDA4-BAE3-4DFC-B408-1DC9F83C5F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567DDDA4-BAE3-4DFC-B408-1DC9F83C5F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567DDDA4-BAE3-4DFC-B408-1DC9F83C5F39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BEFC500-3832-4E06-A04D-71E05D25C2D2}
+	EndGlobalSection
+EndGlobal
