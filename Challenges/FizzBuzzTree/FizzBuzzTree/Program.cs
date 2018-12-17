@@ -14,11 +14,11 @@ namespace FizzBuzzTree
                 "  |4|   |300| \n" +
                 "  / \\     /  \\ \n" +
                 "|-5| |5| |25| |443| ");
-            BinaryTree tree = new BinaryTree
+            BinaryTree<string> tree = new BinaryTree<string>
             {
-                Root = new Node() { Value = "6", Left = null, Right = null }
+                Root = new Node<string>() { Value = "6", Left = null, Right = null }
             };
-            BinaryTree.Delegate l = x =>
+            BinaryTree<string>.Delegate l = x =>
             {
                 Console.Write(x.Value + " ");
             };
@@ -30,7 +30,7 @@ namespace FizzBuzzTree
 
             Console.WriteLine("The new tree looks like:");
             tree = FizzBuzz(tree);
-            BinaryTree.Delegate print = x => Console.Write($"{x.Value} ");
+            BinaryTree<string>.Delegate print = x => Console.Write($"{x.Value} ");
             tree.InorderTraverse(print);
             Console.WriteLine();
             Console.WriteLine("It should look like\n" +
@@ -38,10 +38,10 @@ namespace FizzBuzzTree
             Console.ReadKey();
         }
 
-        public static BinaryTree FizzBuzz (BinaryTree tree)
+        public static BinaryTree<string> FizzBuzz (BinaryTree<string> tree)
         {
             //Because my traversal methods use delegates, I only have to write a FizzBuzz delegate
-            BinaryTree.Delegate fizzBuzz = x =>
+            BinaryTree<string>.Delegate fizzBuzz = x =>
             {
                 if (int.Parse(x.Value) % 15 == 0)
                 {

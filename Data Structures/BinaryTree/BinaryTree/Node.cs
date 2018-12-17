@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Binary_Tree
 {
-    public class Node
+    public class Node<T>
     {
-        public String Value { get; set; }
-        public Node Left { get; set; }
-        public Node Right { get; set; }
+        public T Value { get; set; }
+        public Node<T> Left { get; set; }
+        public Node<T> Right { get; set; }
     }
 }
