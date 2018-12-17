@@ -54,7 +54,7 @@ public class Max_Heap
     /// check if there is a violation, and if so swap parent with largest child
     /// and recurr until their is no violation (because node has no larger children)
     /// This is accomplished easiest by swapping values.
-    public void MaxHeapify(Node root)
+    private void MaxHeapify(Node root)
     {
         // Base case
         if (root == null)

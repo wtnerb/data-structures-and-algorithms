@@ -48,18 +48,6 @@ namespace HeapTesting
             Assert.Equal(expect, actual);
         }
 
-        [Theory]
-        [InlineData(new int[] { 9, 8, 7, 6, 5, 4 }, new int[] { 9, 8, 7, 6, 5, 4 }, "LR")]
-        [InlineData(new int[] { 9, 8, 7, 6, 9, 4 }, new int[] { 9, 9, 7, 6, 8, 4 }, "L")]
-        public void CanHeapify(int[] startArr, int[] targetArr, string path)
-        {
-            Max_Heap mh = new Max_Heap(startArr);
-            mh.MaxHeapify(Path(mh.Root, path));
-            int[] endArr = mh.ToArray();
-            Assert.True(ArraysMatch(targetArr, endArr));
-        }
-
-
         private Node Path(Node root, string path)
         {
             path = path.ToUpper();
