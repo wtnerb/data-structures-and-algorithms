@@ -31,6 +31,7 @@ public class Max_Heap
             Node current = q.Dequeue();
             current.Left = new Node(nums[nums.Length - 1]);
         }
+        MaxHeapify(Root);
     }
     ///For testing purposes, it can be useful to convert a max heap back into an array
     public int[] ToArray()
@@ -55,6 +56,18 @@ public class Max_Heap
     /// This is accomplished easiest by swapping values.
     public void MaxHeapify(Node root)
     {
+        // Base case
+        if (root == null)
+        {
+            return;
+        }
+
+        //Recurr, so that entire tree below root is max-heapified
+        MaxHeapify(root.Left);
+        MaxHeapify(root.Right);
+
+        // The logic from here requires that the subtrees be max trees
+
         //Guard clauses
         if (root.Left == null)
         {
@@ -63,7 +76,7 @@ public class Max_Heap
                 //Do nothing to a leaf
                 return;
             }
-            if (!(root.Left.Val > root.Val))
+            if (!(root.Right.Val > root.Val))
             {
                 //All is as expected
                 return;
@@ -77,7 +90,7 @@ public class Max_Heap
         }
         if (root.Right == null)
         {
-            if (!(root.Right.Val > root.Val))
+            if (!(root.Left.Val > root.Val))
             {
                 // No work needs to be done
                 return;

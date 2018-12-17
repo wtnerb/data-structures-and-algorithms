@@ -15,8 +15,9 @@ namespace HeapTesting
 
         [Theory]
         [InlineData(new int[] { 5, 4, 3, 2, 1 }, new int[] { 5, 4, 3, 2, 1 })]
-        [InlineData(new int[] { 5, 4, 3, 2, 5 }, new int[] { 5, 5, 4, 3, 2 })]
-        public void CanBuildHeap(int[] arr, int[] maxedArr)
+        [InlineData(new int[] { 5, 4, 3, 2, 5 }, new int[] { 5, 5, 3, 2, 4 })]
+        [InlineData(new int[] { 5, 4, 3, 6, 5, 2, 8 }, new int[] { 8, 6, 5, 4, 5, 2, 3 })]
+        public void CanBuildMaxHeap(int[] arr, int[] maxedArr)
         {
             Max_Heap mh = new Max_Heap(arr);
             var actual = mh.ToArray();
