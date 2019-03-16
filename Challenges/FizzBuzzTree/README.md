@@ -6,4 +6,4 @@ ex: "1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz, 16
 In this challenge, traverse a tree and apply the fizz buzz rules to replace each number with a phrase if appropriate
 
 ## solution
-![whiteboard of solution](../../../assets/FizzBuzzTree.jpg)
+![whiteboard of solution](../../assets/FizzBuzzTree.jpg)
